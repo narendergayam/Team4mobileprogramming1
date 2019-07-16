@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -30,12 +32,29 @@ public class orderdet extends AppCompatActivity {
         Repositories repositories = intent.getParcelableExtra("owner");
         Picasso.get().load(repositories.getUseravatar()).into(o_img);
 
+      /* intent = new Intent(orderdet.this, Listrepository.class);
+        startActivity(intent);
+        finish();*/
         o_followers.setText(repositories.getFollowers());
         o_following.setText(repositories.getFollowing());
         o_name.setText(repositories.getUsername());
+
+
         o_repo.setText(repositories.getUserrepository());
 
 
+        o_repo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-    }
-}
+                Intent intent1 = new Intent(orderdet.this, Listrepository.class);
+
+                startActivity(intent1);
+
+
+            }
+
+
+});
+    };
+};
